@@ -1,0 +1,139 @@
+<!doctype html>
+<head>
+  <title>&#57627;</title>
+  <style>
+    body {
+        font-family: -apple-system,".SFNSText-Regular","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+    ￼   font-weight: 400;
+    ￼   font-style: normal;
+    ￼   text-rendering: optimizeLegibility;
+    ￼   -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-font-feature-settings: "liga" on;
+￼       color: rgba(0,0,0,0.8);
+    ￼   font-size: 18px;
+￼       line-height: 1.4;
+        text-align: center;
+        width: 800px;
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 5em;
+    }
+    .is-scary { padding: 2em; }
+    .yes {
+        background: lightGreen;
+        color: green;
+        border: 1px solid green;
+    }
+    .no {
+        background: tomato;
+        color: white;
+        border: 1px solid red;
+    }
+    .scary-btn {
+        width: 33.333%;
+        margin: 2em;
+        padding: 1em;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+  <h1>Scare-a-tron 2000</h1>
+  <p>Hey Scare-a-tron, are you scary?</p>
+  <div class="is-scary js-is-scary"></div>
+  <footer>
+    <button class="scary-btn js-scary-off">Be Not Scary</button>
+    <button class="scary-btn js-scary-on">Be Scary</button>
+  </footer>
+  <button class="scary-btn js-scare-test">Test the Scary</button>
+  <script>
+    $(function() {
+        var isScary = $('.js-is-scary')
+        var scaryOffBtn = $('.js-scary-off')
+        var scaryOnBtn = $('.js-scary-on')
+        var scaryTestBtn = $('.js-scare-test')
+
+        var getScareLevel = function() {
+            $.ajax({
+                url: '/scare',
+                method: 'GET',
+            }).done(function(data) {
+                if (data.exists) {
+                    isScary
+                        .removeClass('yes')
+                        .addClass('no')
+                        .text('NOPE');
+                } else {
+                    isScary
+                        .removeClass('no')
+                        .addClass('yes')
+                        .text('YUP');
+                }
+            }).fail(function() {
+                alert('Fail:', data);
+            });
+        };
+
+        var scaryOn = function(e) {
+            $.ajax({
+                url: '/scare/1',
+                method: 'POST',
+            }).done(getScareLevel).fail(function() {
+                alert('Failed!');
+            });
+        };
+
+        var scaryOff = function(e) {
+            $.ajax({
+                url: '/scare/0',
+                method: 'POST',
+            }).done(getScareLevel).fail(function() {
+                alert('Failed!');
+            });
+        };
+
+        var scaryToggle = function(e) {
+            $.ajax({
+                url: '/scare',
+                method: 'POST',
+            }).done(getScareLevel).fail(function() {
+                alert('Failed!');
+            });
+        };
+
+        var scaryTest = function(e) {
+            $.ajax({
+                url: '/',
+                method: 'POST',
+            }).done(getScareLevel).fail(function() {
+                alert('Failed!');
+            });
+        };
+
+        scaryOnBtn.on('click', scaryOn);
+        scaryOffBtn.on('click', scaryOff);
+        scaryTestBtn.on('click', scaryTest);
+        $(document).on('keydown', function(e) {
+            e.preventDefault();
+            // Space to toggle
+            if (e.keyCode == 32) {
+                scaryToggle();
+            }
+
+            // Up arrow or 1 == ON
+            if (e.keyCode == 49 || e.keyCode == 38) {
+                scaryOn();
+            }
+
+            // Down arrow or 0 == OFF
+            if (e.keyCode == 48 || e.keyCode == 40) {
+                scaryOff();
+            }
+        });
+
+        getScareLevel();
+    });
+  </script>
+</body>
