@@ -1,36 +1,41 @@
 <!doctype html>
 <head>
-  <title>&#57627;</title>
+  <title>&#128123;</title>
   <style>
     body {
-        font-family: -apple-system,".SFNSText-Regular","Helvetica Neue","Roboto","Segoe UI",sans-serif;
-    ￼   font-weight: 400;
-    ￼   font-style: normal;
-    ￼   text-rendering: optimizeLegibility;
-    ￼   -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -moz-font-feature-settings: "liga" on;
-￼       color: rgba(0,0,0,0.8);
-    ￼   font-size: 18px;
-￼       line-height: 1.4;
+        font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-rendering: optimizeLegibility;
+        color: rgba(0,0,0,0.8);
+        font-size: 18px;
+        line-height: 1.4;
         text-align: center;
+
+        -moz-osx-font-smoothing: grayscale;
+         -webkit-font-smoothing: antialiased;
+
+        -moz-font-feature-settings: "liga" on;
+
         width: 800px;
         margin: 0 auto;
     }
-    h1 {
-        font-size: 5em;
-    }
+
+    h1 { font-size: 5em; }
     .is-scary { padding: 2em; }
+
     .yes {
         background: lightGreen;
         color: green;
         border: 1px solid green;
     }
+
     .no {
         background: tomato;
         color: white;
         border: 1px solid red;
     }
+
     .scary-btn {
         width: 33.333%;
         margin: 2em;
@@ -115,20 +120,24 @@
         scaryOnBtn.on('click', scaryOn);
         scaryOffBtn.on('click', scaryOff);
         scaryTestBtn.on('click', scaryTest);
+
         $(document).on('keydown', function(e) {
-            e.preventDefault();
+
             // Space to toggle
             if (e.keyCode == 32) {
+                e.preventDefault();
                 scaryToggle();
             }
 
             // Up arrow or 1 == ON
             if (e.keyCode == 49 || e.keyCode == 38) {
+                e.preventDefault();
                 scaryOn();
             }
 
             // Down arrow or 0 == OFF
             if (e.keyCode == 48 || e.keyCode == 40) {
+                e.preventDefault();
                 scaryOff();
             }
         });

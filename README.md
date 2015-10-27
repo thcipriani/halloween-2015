@@ -6,7 +6,7 @@ Demo video
 
 Click the image below to view the demo video:
 
-[![Demo video](demo.gif)](https://archive.org/embed/particle-lights)
+[![Demo video](demo.gif)](https://archive.org/details/particle-lights)
 
 Materials
 ---

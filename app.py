@@ -136,7 +136,6 @@ def scare(do_scare=None):
     elif do_scare is None and not scare_exists:
         do_scare = 0
 
-    logging.info('FUCK {}'.format(do_scare))
     if int(do_scare) > 0:
         # Remove the scare file
         if os.path.isfile(dont_scare):
@@ -149,7 +148,6 @@ def scare(do_scare=None):
     with open(dont_scare, 'a'):
         os.utime(dont_scare, None)
         return jsonify(exists=True)
-
 
 
 if __name__ == '__main__':
