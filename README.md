@@ -1,12 +1,13 @@
 Halloween Fun Times.
 ===
 
-Demo
+Demo video
 ---
 
-<iframe src="https://archive.org/embed/particle-lights" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+[![Demo video](demo.gif)](https://archive.org/embed/particle-lights)
 
-What you need to make this work:
+Materials
+---
 
 - [Particle/Spark core](https://www.particle.io/)
 - [Phillips Hue bulb](http://www2.meethue.com/) for your portch light
@@ -14,7 +15,8 @@ What you need to make this work:
 - [Magnetic door reed switch](http://sfe.io/p13247)
 - A computer on which you have python 2.6+
 
-What is this?
+WAT‽
+---
 
 I get **a LOT** of trick-or-treaters, easily more than 100. Basically,
 this is a flask app that will strobe my portch light red, and
